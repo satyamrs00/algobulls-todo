@@ -10,10 +10,8 @@ class TodoSerializer(serializers.ModelSerializer):
         required=False,
         allow_null=True
     )
-    owner = serializers.SlugRelatedField(
-        read_only=False,
-        slug_field='username',
-        queryset=User.objects.all(),
+    owner = serializers.HiddenField(
+        default=serializers.CurrentUserDefault()
     )
 
     class Meta:
@@ -30,7 +28,6 @@ class TodoSerializer(serializers.ModelSerializer):
         if 'status' in data:
             data['status'] = [status[0] for status in STATUS_CHOICES if status[1].lower() == data['status'].lower()][0]
         
-        data['owner'] = self.context['request'].user
         print(data)
         return super().to_internal_value(data)
     
