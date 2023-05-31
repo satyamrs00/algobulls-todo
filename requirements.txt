@@ -6,3 +6,4 @@ pytz
 sqlparse
 typing_extensions
 tzdata
+psycopg2
