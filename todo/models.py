@@ -8,6 +8,7 @@ class User(AbstractUser):
     pass
 
 class Todo(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=1000)
