@@ -9,3 +9,4 @@ pytz
 sqlparse
 typing_extensions
 tzdata
+whitenoise[brotli]
