@@ -2,9 +2,10 @@ asgiref
 dj-database-url
 Django
 djangorestframework
+gunicorn
+psycopg2
+python-dotenv
 pytz
 sqlparse
 typing_extensions
 tzdata
-python-dotenv
-psycopg2
