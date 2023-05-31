@@ -9,6 +9,8 @@ from rest_framework.permissions import IsAuthenticated
 
 class TodoView(viewsets.ModelViewSet):
     class IsOwner(IsAuthenticated):
+        def has_permission(self, request, view):
+            return request.user and request.user.is_authenticated
         def has_object_permission(self, request, view, obj):
             return obj.owner == request.user
         
@@ -16,3 +18,6 @@ class TodoView(viewsets.ModelViewSet):
     queryset = Todo.objects.all()
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsOwner]
+
+    def get_queryset(self):
+        return Todo.objects.filter(owner=self.request.user)
