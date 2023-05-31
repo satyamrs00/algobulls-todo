@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Todo, STATUS_CHOICES, Tag, User
+from django.utils import timezone
 
 class TodoSerializer(serializers.ModelSerializer):
     tags = serializers.SlugRelatedField(
@@ -35,3 +36,14 @@ class TodoSerializer(serializers.ModelSerializer):
         representation = super().to_representation(instance)
         representation['status'] = STATUS_CHOICES[instance.status][1]
         return representation
+    
+    def validate(self, data):
+        if (data['status'] == 3) and (data.get('due_date') is None):
+            raise serializers.ValidationError("Due date is required for overdue tasks")
+        
+        if (data.get('due_date') is not None) and (data.get('due_date') < timezone.now()):
+            raise serializers.ValidationError("Due date cannot be before timestamp")
+        
+        if (data.get('due_date') is not None) and (data.get('due_date') > timezone.now() + timezone.timedelta(days=7)):
+            raise serializers.ValidationError("Due date cannot be more than 7 days from timestamp")
+        return data
