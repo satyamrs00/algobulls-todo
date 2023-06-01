@@ -146,8 +146,8 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Your Project API',
-    'DESCRIPTION': 'Your project description',
+    'TITLE': 'Algobulls Todo API',
+    'DESCRIPTION': 'API for Algobulls Todo App',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }
