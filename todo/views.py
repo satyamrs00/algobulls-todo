@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .serializers import TodoSerializer
+from .serializers import TodoSerializer, UserSerializer
 from todo.models import Todo
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.generics import CreateAPIView
 
 # Create your views here.
 
@@ -21,3 +22,8 @@ class TodoView(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return Todo.objects.filter(owner=self.request.user)
+    
+
+class UserCreate(CreateAPIView):
+    serializer_class = UserSerializer
+    

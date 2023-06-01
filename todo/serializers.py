@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Todo, Tag
+from .models import Todo, Tag, User
 from django.utils import timezone
 
 class TodoSerializer(serializers.ModelSerializer):
@@ -45,3 +45,14 @@ class TodoSerializer(serializers.ModelSerializer):
         #     raise serializers.ValidationError("Due date cannot be more than 7 days from timestamp")
         
         return data
+    
+
+class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'password']
+
+    def create(self, validated_data):
+        user = User.objects.create_user(**validated_data)
+        return user
