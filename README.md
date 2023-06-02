@@ -16,7 +16,7 @@
 ## Getting Started
 The API is available at [https://algobulls-todo.onrender.com/](https://algobulls-todo.onrender.com/)
 
-You can see the documentation at [https://algobulls-todo.onrender.com/api/schema/swagger-ui/](https://algobulls-todo.onrender.com/api/schema/swagger-ui/)
+You can see the documentation at [https://algobulls-todo.onrender.com/](https://algobulls-todo.onrender.com/)
 
 #### Or you can run it locally
 1. Clone the repository
@@ -29,8 +29,8 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 4. The API is now available at [http://localhost:8000/](http://localhost:8000/)
-5. You can see the documentation at [http://localhost:8000/api/schema/swagger-ui/](http://localhost:8000/api/schema/swagger-ui/)
-6. You can also see the documentation at [http://localhost:8000/api/schema/redoc/](http://localhost:8000/api/schema/redoc/)
+5. You can see the documentation at [http://localhost:8000/](http://localhost:8000/api/schema/swagger-ui/)
+6. You can also see the documentation at [http://localhost:8000/](http://localhost:8000/api/schema/redoc/)
 
 ## API Endpoints
 
